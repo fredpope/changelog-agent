@@ -1,0 +1,27 @@
+# Dependencies
+/node_modules
+
+# Wrangler artifacts
+/.wrangler/
+/dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS-specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+
+# Secrets (if you were to use a .dev.vars file)
+.dev.vars 

@@ -1,0 +1,35 @@
+name = "changelog-monitor"
+main = "src/index.ts"
+compatibility_date = "2024-04-05"
+
+# Define a KV namespace binding. 
+# You'll need to create a KV namespace in your Cloudflare dashboard
+# and then add the id here. Example: preview_id = "...", id = "..."
+kv_namespaces = [
+  { binding = "CHANGELOG_KV", id = "ea0194dcb578419ca2c62b14a151ab89", preview_id = "your_kv_namespace_preview_id_here" }
+]
+
+[triggers]
+crons = ["*/15 * * * *"] # Runs every 15 minutes
+
+[observability]
+enabled = true
+
+# Non-sensitive configuration variables
+[vars]
+WORKER_URL = "https://changelog-monitor.fredpope.workers.dev"
+CHANGELOG_NAME = "GLAPI Changelog" # Optional: Name for the changelog source
+GEMINI_MODEL = "gemini-2.0-flash" # AI model to use
+GEMINI_TEMPERATURE = "0.6" # Temperature for AI generation (0.0-1.0)
+GEMINI_MAX_TOKENS = "250" # Maximum tokens for AI response
+
+# Secrets must be added via `wrangler secret put <KEY>`
+# Required secrets:
+# - GEMINI_API_KEY
+# - TELEGRAM_BOT_TOKEN
+# - TELEGRAM_CHAT_ID
+# - TARGET_CHANGELOG_URL
+# - X_API_KEY
+# - X_API_SECRET_KEY
+# - X_ACCESS_TOKEN
+# - X_ACCESS_TOKEN_SECRET 
